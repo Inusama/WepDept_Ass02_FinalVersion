@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Layout/SharedLayout.cshtml";
+}
+
+@section main {
+    @if (ViewBag.RouteValue == 1)
+    {
+        <div>Register Successfully</div>
+    }
+    else if (ViewBag.RouteValue == 2)
+    {
+        <div>Login Successfully</div>
+    }
+    }
+
+

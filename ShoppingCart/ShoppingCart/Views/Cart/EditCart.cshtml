@@ -1,0 +1,77 @@
+﻿@using ShoppingCart.Models;
+@model List<Cart>
+
+@{
+	Layout = "~/Views/Layout/SharedLayout.cshtml";
+	ViewBag.Title = "EditCart";
+}
+
+@section main {
+	<table class="table table-view-cart mrb30">
+		<thead>
+			<tr>
+				<th width="30%">
+					Item
+				</th>
+				<th>
+					Quantity
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					TotalPrice
+				</th>
+				<th>
+					Edit
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<td class="text-left">
+						<div class="col-sm-3 col-xs-4">
+							<div class="row">
+								<a href=""><img src="~/images/new-pic1.jpg" class="img-thumbnail"></a>
+							</div>
+						</div>
+						<div class="col-sm-9 col-xs-8 text-left">
+							<div class="name-prd">
+								<a href="@Url.Action("ProductDetail", "Product",
+							new { @productID = product.ProductID })">@product.Title</a>
+						</div>
+					</div>
+				</td>
+					@using (Html.BeginForm("UpdateCart", "Cart", new { @ProductID = product.ProductID }))
+					{
+						<td>
+							@Html.TextBox("TxtQuantity", product.Quantity)
+						</td>
+					
+				<td class="text-left">
+					@String.Format("{0:0,0}", product.Price) $
+				</td>
+				<td class="text-left">
+					@String.Format("{0:0,0}", product.TotalPrice) $
+				</td>
+                    <td>
+				        <a href="@Url.Action("DeleteCart", "Cart", new {@ProductID = product.ProductID})">
+				            <i class="fa fa-trash-o fa-2x"></i>
+				        </a>
+                    </td>
+                    <td>
+                        <button class="update-product" type="submit"><i class="fa fa-pencil fa-2x"></i></button>
+                    </td>
+					}
+			</tr>
+			}
+		</tbody>
+	</table>
+}
+
+
+
+

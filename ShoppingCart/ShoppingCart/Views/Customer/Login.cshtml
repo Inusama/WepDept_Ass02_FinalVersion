@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Layout/SharedLayout.cshtml";
+}
+
+@section main { 
+    <h1>@ViewBag.Respond</h1>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <h4>Customer</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span>UserName :</span><br />
+                    @Html.TextBox("TxtUserName")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span>PassWord :</span><br />
+                    @Html.Password("TxtPassWord")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="BtSubmit" name="BtSubmit" />
+                </div>
+            </div>
+        </div>
+    }
+}

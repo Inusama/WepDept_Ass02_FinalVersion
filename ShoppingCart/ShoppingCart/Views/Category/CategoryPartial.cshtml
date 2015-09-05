@@ -1,0 +1,11 @@
+﻿@using ShoppingCart.Models;
+@model List<Category>
+
+
+@{
+    foreach (var category in Model)
+    {
+        <li><a href="@Url.Action("ProductByCategory", "Category", new { category.CategoryID })">@category.Title</a></li>
+    }
+}
+

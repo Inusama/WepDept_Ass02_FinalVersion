@@ -1,0 +1,25 @@
+﻿@using ShoppingCart.Models;
+@model List<Product>
+
+@{
+
+    foreach (var product in Model)
+    {   
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="@Url.Action("ProductDetail", "Product", new { product.ProductID })"><img src="~/images/new-pic3.jpg" alt=""></a>
+            <div class="price" style="border:none">
+                <div class="add-cart" style="float:none">
+                    @product.Title
+                    <h4><a href="@Url.Action("ProductDetail", "Product", new { product.ProductID })">View Details</a></h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    }
+}
+
+
+
+
+
+

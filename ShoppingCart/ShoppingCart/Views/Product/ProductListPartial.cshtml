@@ -1,0 +1,32 @@
+﻿@using ShoppingCart.Models;
+@model List<Product>
+
+@{
+    for (int index = 0; index < @Model.Count; )
+    {
+        <div class="section group">
+            @for (int num = 0; num < 4 && index < @Model.Count; num++, index++)
+            {
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@Url.Action("ProductDetail", "Product", new { Model.ElementAt(index).ProductID })"><img src="/images/feature-pic1.jpg" alt="" /></a>
+                    <h2>@Model.ElementAt(index).Title</h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@String.Format("{0:0,0}", @Model.ElementAt(index).Price) $</span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="@Url.Action("ProductDetail", "Product", new { Model.ElementAt(index).ProductID })">View Details</a></h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+}
+
+
+
+
+
+

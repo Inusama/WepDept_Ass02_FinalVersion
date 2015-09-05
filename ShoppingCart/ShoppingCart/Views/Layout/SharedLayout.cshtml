@@ -1,0 +1,129 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="~/Content/SharedLayoutCss/style2.css" rel="stylesheet" />
+	<link href="~/Content/SharedLayoutCss/style.css" rel="stylesheet" />
+	<link href="~/Content/SharedLayoutCss/slider.css" rel="stylesheet" />
+
+	<link href="~/Content/NivoSlider/nivo-slider.css" rel="stylesheet" />
+	<link href="~/Content/ProductLayoutCss/global.css" rel="stylesheet" />
+	<link href="~/Content/ProductLayoutCss/easy-responsive-tabs.css" rel="stylesheet" />
+	<link href="~/Content/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+
+	<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+	<script src="~/Content/NivoSlider/jquery.nivo.slider.js"></script>
+	<script src="~/Content/NivoSlider/jquery.nivo.slider.pack.js"></script>
+
+	<script src="~/Content/ProductLayoutCss/slides.min.jquery.js"></script>
+	<script src="~/Content/ProductLayoutCss/easing.js"></script>
+	<script src="~/Content/ProductLayoutCss/easyResponsiveTabs.js"></script>
+
+	<script>
+		$(function () {
+			$('#products').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				effect: 'slide, fade',
+				crossfade: true,
+				slideSpeed: 350,
+				fadeSpeed: 500,
+				generatePagination: false
+			});
+		});
+	</script>
+</head>
+
+<body>
+	@RenderBody()
+
+	<div class="wrap">
+		<div class="header">
+
+			<div class="headertop_desc">
+				<div class="call">
+					<p><span>Need help?</span> call us <span class="number">1-22-3456789</span></p>
+				</div>
+
+				<div class="account_desc">
+					<ul>
+						<li><a href="@Url.Action("Register", "Customer")">Register</a></li>
+						<li><a href="@Url.Action("Login", "Customer")">Login</a></li>
+						<li><a href="#">Checkout</a></li>
+					</ul>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+			<div class="header_top">
+				<div class="logo">
+					<a href="@Url.Action("Index", "Home")"><img src="/images/logo.png" alt="" /></a>
+				</div>
+				<div class="cart">
+					<p>                        
+						@Html.Action("CartPartial", "Cart")
+					</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="header_bottom">
+				<div class="menu">
+					<ul>
+						<li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="delivery.html">Delivery</a></li>
+						<li><a href="news.html">News</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="search_box">
+                    <div id="TxtSearch">
+                        @using (Html.BeginForm("ReturnSearch", "Search", FormMethod.Post))
+                        {
+                            @Html.TextBox("TxtSearch", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Enter Product Name" });
+                            <div id="divButtonSearch"><button type="submit"><img src="~/Image/search-icone-8222-128.png" /></button></div>
+                        }
+                    </div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="header_slide">
+				@if (IsSectionDefined("header_slide"))
+				{
+					@RenderSection("header_slide", required: false)
+				}				
+			</div>
+		</div>
+
+		<div class="main">
+			@RenderSection("main", required: false)
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="copy_right">
+			<p>RMIT University © Dat - Trung - Cuong | Template Adapted from  <a href="http://w3layouts.com">W3Layouts</a> </p>
+		</div>
+	</div>
+
+	@*=========Scrip for slider=========*@
+	<script type="text/javascript">
+	$(window).load(function () {
+		$('#slider').nivoSlider({
+			controlNav: false,
+			pauseonHover: false,
+			prevText: '',
+			nextText: ''
+		});
+	});
+	</script>
+</body>
+
+</html>
