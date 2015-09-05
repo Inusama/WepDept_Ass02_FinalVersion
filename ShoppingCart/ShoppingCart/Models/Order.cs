@@ -25,6 +25,9 @@ namespace ShoppingCart.Models
         public Nullable<System.DateTime> DateOrder { get; set; }
         public Nullable<System.DateTime> DateDelivery { get; set; }
         public Nullable<int> CustomerID { get; set; }
+        public string Address { get; set; }
+        public Nullable<int> CreditCard { get; set; }
+        public Nullable<decimal> TotalGrand { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }

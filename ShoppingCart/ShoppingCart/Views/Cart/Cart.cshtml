@@ -39,7 +39,14 @@
 			}
 
         <div id="customeUpdate"><button class="button">@Html.ActionLink("Edit Cart", "EditCart")</button></div>
-        <div id="customeCheckout"><button class="button">Check Out</button></div>
+        <div id="customeCheckout">
+            @using (Html.BeginForm("Order", "Order"))
+            {
+                <input type="submit" value="Order" />
+            }
+        </div>
+
+
 
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
         <div class="MenuPage">

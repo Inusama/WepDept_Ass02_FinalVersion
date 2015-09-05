@@ -32,6 +32,9 @@
     <Property Name="CustomerID" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
     <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreditCard" Type="Int32" />
+    <Property Name="TotalGrand" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>

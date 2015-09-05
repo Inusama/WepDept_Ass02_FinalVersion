@@ -11,11 +11,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingCart.Models
 {
+    using System;
     using System.Collections.Generic;
-
+    
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
             this.Order = new HashSet<Order>();
@@ -39,7 +39,6 @@ namespace ShoppingCart.Models
         [RegularExpression("^[0-9]{8}$", ErrorMessage = "Invalid Phone Number")]
         public string Phone { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
     }
 }

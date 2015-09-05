@@ -28,6 +28,9 @@
     <Property Name="DateOrder" Type="datetime" />
     <Property Name="DateDelivery" Type="datetime" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="CreditCard" Type="int" />
+    <Property Name="TotalGrand" Type="money" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>

@@ -24,6 +24,9 @@
     <EntitySetMapping Name="Order">
       <EntityTypeMapping TypeName="ShoppingCartContextModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TotalGrand" ColumnName="TotalGrand" />
+          <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="Delivery" ColumnName="Delivery" />
