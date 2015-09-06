@@ -55,9 +55,13 @@ namespace ShoppingCart.Controllers
             if (cartItem == null)
             {
                 cartItem = new Cart(productID);
-                listCartItem.Add(cartItem);
                 cartItem.Quantity = int.Parse(Form["TxtQuantity"].ToString());
+                listCartItem.Add(cartItem);
                 return RedirectToAction("EditCart");
+            }
+            else
+            {
+                cartItem.Quantity += int.Parse(Form["TxtQuantity"].ToString());
             }
             return RedirectToAction("EditCart");
         }
@@ -90,10 +94,6 @@ namespace ShoppingCart.Controllers
             {
                 listCartItem.RemoveAll(item => item.ProductID == productID);
 
-            }
-            if (listCartItem.Count == 0)
-            {
-                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Cart");
         }

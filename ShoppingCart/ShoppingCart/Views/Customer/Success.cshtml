@@ -7,12 +7,24 @@
 @section main {
     @if (ViewBag.RouteValue == 1)
     {
-        <div>Register Successfully</div>
+        <label style="font-family:'ambleregular'; margin-left:42%; font-size:xx-large; color:#B81D22 ;">Registration Successfull</label>
     }
     else if (ViewBag.RouteValue == 2)
     {
-        <div>Login Successfully</div>
+        <label style="font-family:'ambleregular'; margin-left:42%; font-size:xx-large; color:#B81D22 ;">Login Sucessfull</label>
     }
-    }
+    
+<div class="content">
+
+    <div id="customeUpdate">
+        <label style="font-family:'ambleregular'; margin-left:40%; font-size:x-large; color:#B81D22 ;">Click here to redirect to shop</label>
+        <div style="clear"/>
+        <button style="margin-right:47%">
+            @Html.ActionLink("Back to Index", "Index", "Home")
+        </button>
+    </div>
+    </div>
+
+}
 
 

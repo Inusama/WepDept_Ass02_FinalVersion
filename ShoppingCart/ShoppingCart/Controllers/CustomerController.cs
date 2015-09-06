@@ -18,14 +18,16 @@ namespace ShoppingCart.Controllers
         [HttpPost]
         public ActionResult Register([Bind(Include = "UserName,PassWord,Email,Phone")] Customer Customer)
         {
+            var Check = db.Customer.SingleOrDefault(n => n.UserName == Customer.UserName );
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && Check == null)
             {
                 db.Customer.Add(Customer);
                 db.SaveChanges();
                 return RedirectToAction("Success", new { routeValue = 1 });
             }
-
+            if (Check != null) { ViewBag.Message = "UserName Is Already Existed"; }
+            else { ViewBag.Message = ""; }
             return View(Customer);
         }
 
@@ -47,6 +49,8 @@ namespace ShoppingCart.Controllers
             {
                 ViewBag.Respond = "Login Success";
                 Session["Account"] = Customer;
+                Session["UserName"] = Customer.UserName;
+
                 return RedirectToAction("Success", new { routeValue = 2 });
             }
 
