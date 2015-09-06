@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ShoppingCartContextModelStoreContainer" CdmEntityContainer="ShoppingCartEntities">
+  <EntityContainerMapping StorageEntityContainer="ShoppingCartModelStoreContainer" CdmEntityContainer="ShoppingCartEntities">
     <EntitySetMapping Name="Category">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.Category">
+      <EntityTypeMapping TypeName="ShoppingCartModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customer">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.Customer">
+      <EntityTypeMapping TypeName="ShoppingCartModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -22,22 +22,22 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Order">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.Order">
+      <EntityTypeMapping TypeName="ShoppingCartModel.Order">
         <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="TotalGrand" ColumnName="TotalGrand" />
-          <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
           <ScalarProperty Name="Delivery" ColumnName="Delivery" />
           <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
           <ScalarProperty Name="DateDelivery" ColumnName="DateDelivery" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+          <ScalarProperty Name="TotalGrand" ColumnName="TotalGrand" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderDetail">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.OrderDetail">
+      <EntityTypeMapping TypeName="ShoppingCartModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -47,7 +47,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.Product">
+      <EntityTypeMapping TypeName="ShoppingCartModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -61,7 +61,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="ShoppingCartContextModel.sysdiagrams">
+      <EntityTypeMapping TypeName="ShoppingCartModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />

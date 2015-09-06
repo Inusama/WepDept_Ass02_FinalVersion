@@ -23,25 +23,15 @@ namespace ShoppingCart.Controllers
                 var order = db.Order.SingleOrDefault(o => o.OrderID == orderID);
                 var orderDetails = db.OrderDetail.Where(o => o.OrderID == orderID).ToList();
 
-                List<int> listProductID = new List<int>();
+                var orderSummary = new OrderSummary(order, orderDetails);
 
-                foreach (var detail in orderDetails) {
-                    Debug.WriteLine(detail.Product.Title);                    
-                }
-
-                ViewBag.UserName = order.Customer.UserName;
-                ViewBag.Address = order.Address;
-                ViewBag.DateOrder = order.DateOrder;
-                ViewBag.TotalGrand = order.TotalGrand;
-                ViewBag.CreditCard = order.CreditCard;
-
-                return View();
+                return View(orderSummary);
             }
 
             [HttpPost]
             public ActionResult Order([Bind(Include = "Address,CreditCard")] Order Order, FormCollection form)
             {
-                if (Session["Account"] == null || Session["Account"] == "")
+                if (Session["Account"] == null)
                 {
                     return RedirectToAction("Login", "Customer");
                 }
@@ -59,6 +49,7 @@ namespace ShoppingCart.Controllers
                 Order.CustomerID = Customer.CustomerID;
                 Order.DateOrder = DateTime.Now;
                 Order.TotalGrand = (decimal) TotalGrand();
+                Order.CreditCard = form["TxtCreditCard"];
                 db.Order.Add(Order);
                 db.SaveChanges();
 
@@ -70,9 +61,8 @@ namespace ShoppingCart.Controllers
                     OrderDetail.Quantity = item.Quantity;
                     OrderDetail.TotalPrice = (decimal) item.TotalPrice;
                     db.OrderDetail.Add(OrderDetail);
-                    Debug.WriteLine(33333);
-
                 }
+
                 db.SaveChanges();
                 return RedirectToAction("Summary", "Order", new { orderID = Order.OrderID});
             }
@@ -99,7 +89,6 @@ namespace ShoppingCart.Controllers
                     TotalGrand += item.TotalPrice;
                 }
                 return TotalGrand;
-
             }
         }
     }

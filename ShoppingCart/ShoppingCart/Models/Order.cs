@@ -14,6 +14,7 @@ namespace ShoppingCart.Models
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
             this.OrderDetail = new HashSet<OrderDetail>();
@@ -26,10 +27,11 @@ namespace ShoppingCart.Models
         public Nullable<System.DateTime> DateDelivery { get; set; }
         public Nullable<int> CustomerID { get; set; }
         public string Address { get; set; }
-        public Nullable<int> CreditCard { get; set; }
+        public string CreditCard { get; set; }
         public Nullable<decimal> TotalGrand { get; set; }
     
         public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

@@ -1,7 +1,6 @@
-﻿@*@using ShoppingCart.Models;
-@model List<Product>;*@
+﻿@using ShoppingCart.Models;
+@model OrderSummary
 
-@model ShoppingCart.Models.Order
 
 @{
     ViewBag.Title = "Summary";
@@ -12,45 +11,18 @@
     <div>
         <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Customer.UserName)
+            <dt> 
+                OrderID              
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Customer.UserName)
+                @Model.Order.OrderID
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DateOrder)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.DateOrder)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Address)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Address)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CreditCard)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CreditCard)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TotalGrand)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TotalGrand)
-            </dd>
+            @Model.Order.DateOrder
+            @Model.Order.Customer.UserName
+            @Model.Order.Address
+            @Model.Order.CreditCard
         </dl>
 
         <table class="table table-view-cart mrb30">
@@ -72,38 +44,32 @@
             </thead>
 
             <tbody>
-                @foreach (var product in Model)
+                @foreach (var cartItem in Model.OrderDetail)
                 {
                     <tr>
                         <td class="text-left">
-                            <div class="col-sm-3 col-xs-4">
-                                <div class="row">
-                                    <a href=""><img src="~/images/new-pic1.jpg" class="img-thumbnail"></a>
-                                </div>
-                            </div>
-
                             <div class="col-sm-9 col-xs-8 text-left">
                                 <div class="name-prd">
-                                    @product.Title
+                                    @cartItem.Product.Title
                                 </div>
                              </div>
                         </td>
 
                          <td>
-                            product.Quantity
+                            @cartItem.Quantity
                         </td>
 
                         <td class="text-left">
-                            @String.Format("{0:0,0}", product.Price) $
+                            @String.Format("{0:0,0}", cartItem.Product.Price) $
                         </td>
 
                         <td class="text-left">
-                            @String.Format("{0:0,0}", product.TotalPrice) $
+                            @String.Format("{0:0,0}", cartItem.TotalPrice) $
                         </td> 
                  </tr>
                 }
             </tbody>
         </table>
-
+        @Model.Order.TotalGrand
     </div>
 }
