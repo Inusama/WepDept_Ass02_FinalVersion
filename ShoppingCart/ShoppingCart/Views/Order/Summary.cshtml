@@ -8,68 +8,90 @@
 }
 
 @section main {
-    <div>
-        <dl class="dl-horizontal">
+    <div class="section group">
 
-            <dt> 
-                OrderID              
-            </dt>
 
-            <dd>
-                @Model.Order.OrderID
-            </dd>
+    <div class="col span_1_of_3">
+        <div class="company_address" style="float:left; 
+                                    font-weight:900; 
+                                    font-size:150%; 
+                                    font-family:ambleregular">
+            <div>
+                <span><label>Order ID: </label></span>
+                <span><label style="float:right">@Model.Order.OrderID</label></span>
+            </div>
 
-            @Model.Order.DateOrder
-            @Model.Order.Customer.UserName
-            @Model.Order.Address
-            @Model.Order.CreditCard
-        </dl>
+            <div>
+                <span><label>UserName: </label></span>
+                <span><label style="float:right">@Model.Order.Customer.UserName</label></span>
+            </div>
+            <div>
+                <span><label>Address: </label></span>
+                <span><label style="float:right">@Model.Order.Address</label></span>
+            </div>
+            <div>
+                <span><label>Credit Card: </label></span>
+                <span><label style="float:right">@Model.Order.CreditCard</label></span>
+            </div>
+            <div>
+                <span><label>Date Order: </label></span>
+                <span><label style="float:right">@Model.Order.DateOrder</label></span>
+            </div>
+        </div>
 
-        <table class="table table-view-cart mrb30">
-            <thead>
-                <tr>
-                    <th width="30%">
-                        Item
-                    </th>
-                    <th>
-                        Quantity
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Total Price
-                    </th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var cartItem in Model.OrderDetail)
-                {
-                    <tr>
-                        <td class="text-left">
-                            <div class="col-sm-9 col-xs-8 text-left">
-                                <div class="name-prd">
-                                    @cartItem.Product.Title
-                                </div>
-                             </div>
-                        </td>
-
-                         <td>
-                            @cartItem.Quantity
-                        </td>
-
-                        <td class="text-left">
-                            @String.Format("{0:0,0}", cartItem.Product.Price) $
-                        </td>
-
-                        <td class="text-left">
-                            @String.Format("{0:0,0}", cartItem.TotalPrice) $
-                        </td> 
-                 </tr>
-                }
-            </tbody>
-        </table>
-        @Model.Order.TotalGrand
     </div>
+
+        <div class="col span_2_of_3 ">
+            <div>
+                <table class="table table-view-cart mrb30">
+                    <thead>
+                        <tr>
+                            <th width="10%">
+                                Item
+                            </th>
+                            <th width="10%">
+                                Quantity
+                            </th>
+                            <th width="10%">
+                                Price
+                            </th>
+                            <th width="10%">
+                                Total Price
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var cartItem in Model.OrderDetail)
+                        {
+                            <tr>
+                                <td class="text-left">
+                                    <div class="col-sm-9 col-xs-8 text-left">
+                                        <div class="name-prd">
+                                            @cartItem.Product.Title
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    @cartItem.Quantity
+                                </td>
+
+                                <td class="text-left">
+                                    @String.Format("{0:0,0}", cartItem.Product.Price) $
+                                </td>
+
+                                <td class="text-left">
+                                    @String.Format("{0:0,0}", cartItem.TotalPrice) $
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <label>Grand Total: </label>@String.Format("{0:0,0}", Model.Order.TotalGrand) $
+
+            </div>
+        </div>
+</div>
 }
