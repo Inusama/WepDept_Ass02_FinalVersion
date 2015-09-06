@@ -197,6 +197,7 @@
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>ShoppingCartContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderSummary.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>ShoppingCartContext.tt</DependentUpon>
     </Compile>
@@ -297,23 +298,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="images\Thumbs.db" />
-    <EntityDeploy Include="Models\ShoppingCartContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShoppingCartContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ShoppingCartContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
-      <LastGenOutput>ShoppingCartContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ShoppingCartContext.edmx.diagram">
-      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ShoppingCartContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
-      <LastGenOutput>ShoppingCartContext.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.woff" />
@@ -345,6 +329,23 @@
     <Content Include="Content\font-awesome-4.4.0\scss\_rotated-flipped.scss" />
     <Content Include="Content\font-awesome-4.4.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.4.0\scss\_variables.scss" />
+    <EntityDeploy Include="Models\ShoppingCartContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShoppingCartContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShoppingCartContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCartContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShoppingCartContext.edmx.diagram">
+      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ShoppingCartContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCartContext.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCartContext.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

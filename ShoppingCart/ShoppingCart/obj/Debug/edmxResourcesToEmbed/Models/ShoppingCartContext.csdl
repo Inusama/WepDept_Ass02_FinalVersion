@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ShoppingCartContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="ShoppingCartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="CategoryID" />
@@ -30,11 +30,11 @@
     <Property Name="DateOrder" Type="DateTime" Precision="3" />
     <Property Name="DateDelivery" Type="DateTime" Precision="3" />
     <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreditCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TotalGrand" Type="Decimal" Precision="19" Scale="4" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
     <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CreditCard" Type="Int32" />
-    <Property Name="TotalGrand" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
