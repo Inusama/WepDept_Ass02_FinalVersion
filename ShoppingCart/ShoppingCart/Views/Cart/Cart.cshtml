@@ -42,13 +42,16 @@
         <div id="customeCheckout">
             @using (Html.BeginForm("Order", "Order"))
             {
-                <input type="submit" value="Order" />
+                <input type="submit" value="Order" 
+                       style="width: 120px; 
+                       height: 50px;		
+                       background-color:#B81D22;		
+                       border-radius: 10px;		
+                       float:right" class="button"/>
             }
         </div>
 
-
-
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
         <div class="MenuPage">
             @Html.PagedListPager(Model, page => Url.Action("Cart", new { page = page }))
         </div>

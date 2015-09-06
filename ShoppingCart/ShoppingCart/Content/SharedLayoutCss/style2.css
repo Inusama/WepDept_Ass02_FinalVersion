@@ -2757,8 +2757,10 @@ select[multiple].form-group-lg .form-control {
   min-height: 27px;
 }
 .form-horizontal .form-group {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: 25%;
+  margin-right: 25%;
+
+  resize:both;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
@@ -17490,25 +17492,24 @@ ul.result-stats li:hover a {
   }
    #customeUpdate button {		
       width: 120px;		
-      height: 60px;		
-      background-color:#ff0000;		
+      height: 50px;		
+      background-color:#B81D22;		
       border-radius: 10px;		
-      float:right;		
-     		
-     		
+      float:right;		     		     		
   }		
 		
   #customeUpdate a {		
      color:#fff;		
-     float:right;  		
+      
+     font-size:inherit; 		
   }		
 		
   #customeCheckout button {		
-      width: 150px;		
-      height: 60px;		
-      background-color:#4eb141;		
+      width: 120px;		
+      height: 50px;		
+      background-color:#B81D22;		
       border-radius: 10px;		
-      float:right;		
+      float:right;	
   }		
 		
   #customeCheckout a {		
