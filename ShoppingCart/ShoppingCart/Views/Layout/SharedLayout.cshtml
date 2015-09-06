@@ -86,8 +86,12 @@
                     <div id="TxtSearch">
                         @using (Html.BeginForm("ReturnSearch", "Search", FormMethod.Post))
                         {
-                            @Html.TextBox("TxtSearch", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Enter Product Name" });
-                            <div id="divButtonSearch"><button type="submit"><img src="~/Image/search-icone-8222-128.png" /></button></div>
+                            <div style="float:left">
+                                @Html.TextBox("TxtSearch", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Enter Product Name" })
+
+
+                            </div>
+                            <div id="divButtonSearch" style="float:right"><button type="submit" ><img src="~/images/search.png" /></button></div>
                         }
                     </div>
 				</div>

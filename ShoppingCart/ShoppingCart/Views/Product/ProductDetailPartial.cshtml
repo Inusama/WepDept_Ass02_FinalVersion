@@ -27,7 +27,7 @@
 		<h2>@Model.Title </h2>
 		<p>@Model.ShortDescription</p>
 		<div class="price">
-			<p>Price: <span>@Model.Price</span></p>
+			<p>Price: <span>@String.Format("{0:0,0}", @Model.Price) $</span></p>            
 		</div>
 		<div class="available">
 			<p>
@@ -36,7 +36,7 @@
                 {
                     <label>Quantity: </label>
                     @Html.TextBox("TxtQuantity")
-                    <button class="button" type="submit">Add To Cart</button>
+                    <button class="button" type="submit" >Add to Cart</button>
                 }
 			</p>
 		</div>
