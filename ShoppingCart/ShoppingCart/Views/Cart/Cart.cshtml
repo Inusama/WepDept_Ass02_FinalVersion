@@ -14,31 +14,33 @@
 			<div class="heading">
 				<h3>Your Cart</h3>
 			</div>
-
 			<div class="clear"></div>
 		</div>
 
 		<div class="clear"></div>
 
-
 			@foreach (var product in Model)
-			{<div class="content_top">
-				<div class="image group">
-					<div class="grid images_3_of_1">
-						<img src="~/images/newsimg2.jpg" alt="" />
-					</div>
-					<div class="grid news_desc">
-						<h3><a href="@Url.Action("ProductDetail", "Product", new { @ProductID = product.ProductID })">@product.Title</a></h3>
-						<h4><b>Quantity:</b>   @product.Quantity</h4>
-						<h4><b>Price:</b>      @product.Price</h4>
-						<h4><b>TotalPrice:</b> @product.TotalPrice</h4>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
+			{
+                <div class="content_top">
+				    <div class="image group">
+					    <div class="grid images_3_of_1">
+						    <img src="~/images/newsimg2.jpg" alt="" />
+					    </div>
+					    <div class="grid news_desc">
+						    <h3><a href="@Url.Action("ProductDetail", "Product", new { @ProductID = product.ProductID })">@product.Title</a></h3>
+						    <h4><b>Quantity:</b>   @product.Quantity</h4>
+						    <h4><b>Price:</b>      @product.Price</h4>
+						    <h4><b>TotalPrice:</b> @product.TotalPrice</h4>
+					    </div>
+				    </div>
+				    <div class="clear"></div>
+			    </div>
 			}
 
-        <div id="customeUpdate"><button class="button">@Html.ActionLink("Edit Cart", "EditCart")</button></div>
+        <div id="customeUpdate">
+            <button class="button">@Html.ActionLink("Edit Cart", "EditCart")</button>
+        </div>
+
         <div id="customeCheckout">
             @using (Html.BeginForm("Order", "Order"))
             {
@@ -55,6 +57,7 @@
         <div class="MenuPage">
             @Html.PagedListPager(Model, page => Url.Action("Cart", new { page = page }))
         </div>
+
         <style>
             .MenuPage li {
                 display: inline;

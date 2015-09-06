@@ -36,7 +36,7 @@
                 {
                     <label>Quantity: </label>
                     @Html.TextBox("TxtQuantity")
-                    <button class="button" type="submit" >Add to Cart</button>
+                    <button class="button" type="submit" id="btAdd">Add to Cart</button>
                 }
 			</p>
 		</div>
@@ -65,4 +65,25 @@
 		    fit: true   // 100% fit in a container
 	    });
     });
+
+    $('#btAdd').click(function () {
+
+        if ($('#TxtQuantity').val() == "") {
+            alert("Quantity Cannot Be Empty!!");
+            return false;
+        }
+
+        if (isNaN($('#TxtQuantity').val())) {
+            alert("Invalid Quantity!!");
+            return false;
+        }
+
+        if (parseInt($('#TxtQuantity').val()) <= 0 ) {
+            alert("Invalid Quantity!!");
+            return false;
+        }
+        return true;
+    });
+
 </script>
+
