@@ -338,6 +338,5 @@ C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCar
 C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\obj\Debug\ShoppingCart.csprojResolveAssemblyReference.cache
 C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\obj\Debug\ShoppingCart.dll
 C:\Users\trungnguyen\Desktop\WepDept_Ass02_FinalVersion\ShoppingCart\ShoppingCart\obj\Debug\ShoppingCart.pdb

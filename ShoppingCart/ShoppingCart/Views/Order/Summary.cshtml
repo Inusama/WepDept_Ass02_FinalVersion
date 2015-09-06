@@ -1,0 +1,109 @@
+﻿@*@using ShoppingCart.Models;
+@model List<Product>;*@
+
+@model ShoppingCart.Models.Order
+
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Layout/SharedLayout.cshtml";
+}
+
+@section main {
+    <div>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOrder)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOrder)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditCard)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreditCard)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalGrand)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalGrand)
+            </dd>
+        </dl>
+
+        <table class="table table-view-cart mrb30">
+            <thead>
+                <tr>
+                    <th width="30%">
+                        Item
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Total Price
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td class="text-left">
+                            <div class="col-sm-3 col-xs-4">
+                                <div class="row">
+                                    <a href=""><img src="~/images/new-pic1.jpg" class="img-thumbnail"></a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-xs-8 text-left">
+                                <div class="name-prd">
+                                    @product.Title
+                                </div>
+                             </div>
+                        </td>
+
+                         <td>
+                            product.Quantity
+                        </td>
+
+                        <td class="text-left">
+                            @String.Format("{0:0,0}", product.Price) $
+                        </td>
+
+                        <td class="text-left">
+                            @String.Format("{0:0,0}", product.TotalPrice) $
+                        </td> 
+                 </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
