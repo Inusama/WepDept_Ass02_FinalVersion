@@ -37,6 +37,11 @@ namespace ShoppingCart.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public ActionResult Login(FormCollection Form)
         {
