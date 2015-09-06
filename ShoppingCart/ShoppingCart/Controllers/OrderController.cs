@@ -4,30 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingCart.Models;
+using System.Diagnostics;
 
 namespace ShoppingCart.Controllers
 {
     public class OrderController : Controller
-    {
-       
-
+    {       
             private ShoppingCartEntities db = new ShoppingCartEntities();
-
-            // GET: Order
-            public ActionResult Index()
-            {
-                return View();
-            }
 
             [HttpGet]
             public ActionResult Order()
             {
+                return View();
+            }
+
+            public ActionResult Summary(int orderID)
+            {
+                var order = db.Order.SingleOrDefault(o => o.OrderID == orderID);
+                var orderDetails = db.OrderDetail.Where(o => o.OrderID == orderID).ToList();
+
+                List<int> listProductID = new List<int>();
+
+                foreach (var detail in orderDetails) {
+                    Debug.WriteLine(detail.Product.Title);                    
+                }
+
+                ViewBag.UserName = order.Customer.UserName;
+                ViewBag.Address = order.Address;
+                ViewBag.DateOrder = order.DateOrder;
+                ViewBag.TotalGrand = order.TotalGrand;
+                ViewBag.CreditCard = order.CreditCard;
 
                 return View();
             }
 
             [HttpPost]
-            public ActionResult Order([Bind(Include = "CreditCard,Address")] Order Order)
+            public ActionResult Order([Bind(Include = "Address,CreditCard")] Order Order, FormCollection form)
             {
                 if (Session["Account"] == null || Session["Account"] == "")
                 {
@@ -37,12 +49,10 @@ namespace ShoppingCart.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                if (Order.Address == null || Order.CreditCard == null)
+                if (Order.Address == null || form["TxtCreditCard"] == null)
                 {
                     return RedirectToAction("Order", "Order");
                 }
-
-                // View();
 
                 Customer Customer = (Customer) Session["Account"];
                 List<Cart> Cart = GetCart();
@@ -51,6 +61,7 @@ namespace ShoppingCart.Controllers
                 Order.TotalGrand = (decimal) TotalGrand();
                 db.Order.Add(Order);
                 db.SaveChanges();
+
                 foreach (var item in Cart)
                 {
                     OrderDetail OrderDetail = new OrderDetail();
@@ -59,12 +70,11 @@ namespace ShoppingCart.Controllers
                     OrderDetail.Quantity = item.Quantity;
                     OrderDetail.TotalPrice = (decimal) item.TotalPrice;
                     db.OrderDetail.Add(OrderDetail);
+                    Debug.WriteLine(33333);
+
                 }
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-
-                return View();
-
+                return RedirectToAction("Summary", "Order", new { orderID = Order.OrderID});
             }
 
             public List<Cart> GetCart()
@@ -91,8 +101,5 @@ namespace ShoppingCart.Controllers
                 return TotalGrand;
 
             }
-
-
-
         }
     }
